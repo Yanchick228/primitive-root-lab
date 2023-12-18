@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>laba первообразный root</title>
+</head>
+<body>
+<p>Первообразный корень по модулю:</p>
+<input type="text" placeholder="Введите модуль" id="mod">
+<input type="button" value="Ввод" onclick="mainFunc()">
+<p id="result">Равен:</p>
+<script>
+function mainFunc(){
+let mod = Number(document.getElementById('mod').value);
+let i = 1;
+while (i){
+console.log(`Условие 1 ${firstYslovie(i, mod)} условие 2 ${secondYslovie(i, mod)}`);
+if (firstYslovie(i, mod) && secondYslovie(i, mod)){
+document.getElementById('result').innerText = `Равен: ${i}`;
+break;
+}
+i++;
+}
+}
+
+function eilerFunc(num){
+let counter = 0;
+for (let i = 1; i<=num; i++){
+for (let j = 1; j<=i; j++){
+if (i%j == 0 && num%j == 0 && j!=1)
+break;
+else if (j == i)
+counter++;}
+}
+return counter;
+}
+
+function firstYslovie(num, mod){
+if (num**eilerFunc(mod)%mod == 1)
+return true;
+else
+return false;
+}
+
+function secondYslovie(num, mod){
+for (let i = 1; i < eilerFunc(mod); i++){
+if (num**i%mod == 1){
+return false;
+}}
+return true;
+}
+</script>
+</body>
+</html>
